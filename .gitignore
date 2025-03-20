@@ -172,3 +172,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+# Custom Files other than listed above
+tools.json
+.vscode

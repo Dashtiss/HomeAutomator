@@ -2,8 +2,11 @@ import inspect
 from moonraker import Moonraker
 
 class MoonrakerTools:
-    def __init__(self, url: str) -> None:
-        self.moonraker = Moonraker(url)
+    def __init__(self, url: str | Moonraker) -> None:
+        if isinstance(url, str):
+            self.moonraker = Moonraker(url)
+        else:
+            self.moonraker = url
 
     def get_tools(self) -> list:
         tools = []
@@ -12,11 +15,19 @@ class MoonrakerTools:
         self._add_class_methods(self.moonraker.server.files, tools, prefix="server.files_")
         return tools
 
-    def _add_class_methods(self, obj, tools, prefix=""):
+    def _add_class_methods(self, obj: object, tools: list, prefix: str = "") -> None:
+        """Add class methods to the tools list with detailed information.
+        
+        Args:
+            obj (object): The object from which methods are retrieved.
+            tools (list): The list to which method details are appended.
+            prefix (str): The prefix to prepend to each method name.
+        """
         for name, func in inspect.getmembers(obj, predicate=inspect.ismethod):
             if name.startswith("_"):
                 continue
             docstring = func.__doc__ or "No description available."
+            docstring = docstring.replace("            ", "")
             parameters = inspect.signature(func).parameters
             properties = {}
             required = []
