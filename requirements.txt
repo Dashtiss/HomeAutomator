@@ -1,0 +1,5 @@
+requests
+xmltodict
+SQLAlchemy
+fastapi
+uvicorn

@@ -175,5 +175,5 @@ cython_debug/
 
 
 # Custom Files other than listed above
-tools.json
+*.json
 .vscode
