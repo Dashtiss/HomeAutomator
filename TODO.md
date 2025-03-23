@@ -2,9 +2,9 @@
 
 ## Major Tasks
 - [ ] Set up access to the security cameras
-- [ ] Set up EIsy Support
-- [ ] Set up 3D printing Support
-- [ ] Set up tools
+- [x] Set up EIsy Support
+- [x] Set up 3D printing Support
+- [x] Set up tools
 - [ ] Set up the AI
 
 ## Minor Tasks
